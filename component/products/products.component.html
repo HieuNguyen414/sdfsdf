@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-6   col-sm-6 col-md-6 col-lg-6">
+    <label>Name: </label>
+    <input type="text" class="form-control" [(ngModel)] = "name">
+    <label>Price: </label>
+    <input type="text" class="form-control" [(ngModel)] = "price">
+    <button 
+      class="primary" 
+      [routerLink]="['/products']" 
+      [queryParams] = "{ name: name, price: price}">Search</button>
+    <!-- click get params in url -->
+    <button class="btn btn-warning" [routerLink]="['/products']" (click) = "onSearch()">Search </button>
+  </div>
+</div>
+<hr/>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th> 
+      <th>Name</th>
+      <th>Price</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of products" [routerLink]="['/products', item.id]">
+      <th>{{ item.id }}</th>
+      <th>{{ item.name }}</th>
+      <th>{{ item.price | currency :'VND' :true }}</th>
+      <th>{{ item.status }}</th>
+    </tr>
+  </tbody>
+</table>

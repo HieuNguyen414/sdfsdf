@@ -1,0 +1,9 @@
+<ng-container *ngIf="product"; else noProduct>
+    <p>{{ product.id }}</p>
+    <p>{{ product.name }}</p>
+    <p>{{ product.price | currency:'VND' :true }}</p>
+    <p>{{ product.status }}</p>
+</ng-container>
+<ng-template #noProduct>
+  <p>This product has been deleted</p>
+</ng-template>
